@@ -42,6 +42,7 @@ nav img {
     background: #f44336;
     display: block;
     margin: auto;
+    transition: 5s;
 }
 .nav-links ul li:hover::after{
     width: 100%;
