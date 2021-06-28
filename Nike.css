@@ -63,6 +63,10 @@ nav {
   margin-top: 60px;
 }
 
+.col-1 p {
+  text-transform: capitalize;
+}
+
 button {
   display: inline-block;
   width: fit-content;
