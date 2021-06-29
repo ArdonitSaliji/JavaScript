@@ -54,3 +54,60 @@ nav ul li:nth-child(6) {
 nav ul li a {
   color: #fff;
 }
+nav ul li a:hover {
+  color: #b8222c;
+  transition: 0.3s;
+}
+.content {
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  padding-top: 150px;
+}
+.content h1 {
+  font-size: 50px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding-bottom: 15px;
+}
+.content .template {
+  color: #fba20a;
+}
+.content p:nth-child(2) {
+  padding-bottom: 20px;
+}
+
+.content-images {
+  font-size: 75px;
+}
+
+.content p:nth-child(4) {
+  padding: 20px 0 40px 0;
+}
+
+.buttons {
+  border: none;
+}
+button {
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 15px 50px;
+}
+button:hover {
+  opacity: 0.8;
+}
+.btn-1 {
+  background-color: #06aeea;
+  border: 0;
+  outline: 0;
+  padding: 15px 46px;
+  margin-right: 10px;
+}
+
+.btn-2 {
+  background-color: #ea9909;
+  border: 0;
+  outline: 0;
+  margin-left: 5px;
+}
