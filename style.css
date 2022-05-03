@@ -169,3 +169,21 @@
 .images-text-btn button:nth-child(5) {
   margin-right: -2rem;
 }
+.content-o-images h1 {
+  display: flex;
+  justify-content: center;
+}
+.content-o-images {
+  background-color: red;
+}
+.content-o-images ul li {
+  display: inline-block;
+}
+.content-o-images ul li img {
+  width: 175px;
+  height: 175px;
+}
+.content-o-images ul li h2 {
+  color: white;
+  padding: 10px 15px;
+}
