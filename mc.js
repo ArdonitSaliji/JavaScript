@@ -6,27 +6,29 @@ let extraThing = document.querySelector('select')
 let itemQuantity = $('#itemQuantity')
 let addButton = $('.add')
 
-let span = document.createElement('span')
-span.classList.add('x')
+// let addExtraItem = document.createElement('p')
 
-let addExtraItem = document.createElement('p')
 let text = document.createTextNode(
   extraThing.options[extraThing.selectedIndex].text
 )
 
-addExtraItem.append('Extra ' + text.textContent)
-addExtraItem.classList.add('extraItem')
+addButton.on('click', function () {
+  let addExtraItem = $(`<p class='extraItem'></p>`)
 
-addButton.on('click', () => {
+  let span = $(`<span class='x'></span>`)
+
+  addExtraItem.append(itemQuantity.val() + ' Extra ' + text.textContent)
+
   extraItem
     .text(itemQuantity.val() + ' ' + 'Extra ' + text.textContent)
     .append(span)
-  addExtraItem.append(span)
+
   extraItems.append(addExtraItem)
-  return extraItem
+
+  console.log(text.text)
 })
 
-$(span).click(function (e) {
+$('span').click(function (e) {
   $(e.target).parent().hide(500)
 })
 $('.x').click(function (e) {
