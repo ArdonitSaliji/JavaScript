@@ -297,8 +297,8 @@ button {
 }
 
 .x {
+  transform: translateY(-10px);
   position: absolute;
-  margin-top: 7px;
   height: 15px;
   width: 15px;
   display: flex;
@@ -336,7 +336,7 @@ button {
   display: inline-block;
   padding: 0 0 0 6px;
   margin: 5px 5px;
-  width: 200px;
+  width: 210px;
   height: 20px;
   background-color: yellow;
 }
@@ -345,8 +345,7 @@ button {
   box-shadow: 4px 4px 5px black;
 }
 .extraItem:hover .x {
-  transform: scale(1.2);
-  margin-top: 8px;
+  transform: translateY(-10px) scale(1.2);
 }
 .buttons button {
   background-color: #fdad00;
