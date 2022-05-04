@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,6 @@
     <title>Order Now</title>
   </head>
   <body>
-<<<<<<< HEAD
     <div class="container">
       <div class="navbar">
         <div class="navbar-logo">
@@ -40,54 +40,70 @@
           <h3>McDonald’s Feast</h3>
         </div>
         <div class="images-text-btn">
-          <button type="submit">Order Now</button>
-          <button type="submit">Order Now</button>
-          <button type="submit">Order Now</button>
-          <button type="submit">Order Now</button>
-          <button type="submit">Order Now</button>
+          <button>Order Now</button>
+          <button>Order Now</button>
+          <button id="quarter">Order Now</button>
+          <button>Order Now</button>
+          <button>Order Now</button>
         </div>
       </main>
-=======
-    <div class="navbar">
-      <div class="navbar-logo">
-        <img src="th.jpg" alt="McDonald's Logo" />
-      </div>
-      <div class="navbar-links">
-        <ul>
-          <li><a href="index.html">Home </a></li>
-          <li><a href="Order.html">Order Now</a></li>
-          <li><a href="">About Our Food</a></li>
-          <li><a href="">Contact Us</a></li>
-        </ul>
+
+      <div class="quarter-popup">
+        <div class="quarter-content">
+          <span class="back"></span>
+          <div class="quarter">
+            <img src="quarter.jpg" alt="" /> <br />
+            <h2>McDonald's Quarter</h2>
+            <div class="food">
+              <input id="quantity" value="1" max="50" type="number" />
+              <h3 id="price">$4.49</h3>
+            </div>
+
+            <div class="extra">
+              <h3>Add Extra</h3>
+              <select>
+                <option>
+                  Tomatoes&nbsp;&nbsp;
+                  <p>+$0.25</p>
+                </option>
+                <option>
+                  Prickles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>+$0.30</p>
+                </option>
+                <option>
+                  Cabbages&nbsp;
+                  <p>+$0.35</p>
+                </option>
+                <option>
+                  Cheese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>+$0.40</p>
+                </option>
+                <option>
+                  Onions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>+$0.20</p>
+                </option>
+              </select>
+              <input min="1" max="10" type="number" />
+              <button class="add">Add</button><br />
+              <p class="extraItem">2 Extra Prickles</p>
+              <p class="extraItem">18</p>
+            </div>
+
+            <div class="buttons">
+              <button>Place Order</button>
+              <button id="cancel">Cancel</button>
+            </div>
+          </div>
+          <div class="order">
+            <h2>Your Order</h2>
+            <div>
+              <p>McDonald's Quarter <span id="indicator"></span></p>
+            </div>
+            <button class="continue">Continue</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="content">
-      <div class="content-o-images">
-        <ul>
-          <h1>Place your orders</h1>
-          <li>
-            <img src="Hamburger.jpg" alt="" />
-            <h2>McDonald's Hamburger</h2>
-          </li>
-          <li>
-            <img src="double.jpg" alt="" />
-            <h2>McDonald's Double</h2>
-          </li>
-          <li>
-            <img src="quarter.jpg" alt="" />
-            <h2>McDonald's quarter</h2>
-          </li>
-          <li>
-            <img src="Bicmac.jpg" alt="" />
-            <h2>McDonald's Big Mac</h2>
-          </li>
-          <li>
-            <img src="Feast.jpg" alt="" />
-            <h2>McDonald's Feast</h2>
-          </li>
-        </ul>
-        
->>>>>>> 3de649eaabc3e3f01ceca1f65f37c66b101bc609
-    </div>
+    <script src="mc.js"></script>
   </body>
 </html>
