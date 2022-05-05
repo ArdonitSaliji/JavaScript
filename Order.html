@@ -55,58 +55,41 @@
             <img src="quarter.jpg" alt="" /> <br />
             <h2>McDonald's Quarter</h2>
             <div class="food">
-              <input id="quantity" type="number" />
+              <input value="1" id="quantity" type="number" />
               <h3 id="price">$4.49</h3>
             </div>
 
             <div class="extra">
               <div class="extraContent">
                 <h3>Add Extra</h3>
+
                 <select id="extraThing">
-                  <option>
-                    Tomatoes&nbsp;&nbsp;
-                    <p>+$0.25</p>
+                  <option value="1">Tomatoes&nbsp;&nbsp; +$0.25</option>
+
+                  <option value="2">
+                    Prickles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +$0.30
                   </option>
-                  <option>
-                    Prickles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>+$0.30</p>
+
+                  <option value="3">Cabbages&nbsp; +$0.35</option>
+
+                  <option value="4">
+                    Cheese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +$0.40
                   </option>
-                  <option>
-                    Cabbages&nbsp;
-                    <p>+$0.35</p>
-                  </option>
-                  <option>
-                    Cheese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>+$0.40</p>
-                  </option>
-                  <option>
-                    Onions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>+$0.20</p>
+
+                  <option value="5">
+                    Onions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +$0.20
                   </option>
                 </select>
-                <input id="itemQuantity" type="number" />
+
+                <input value="1" id="itemQuantity" type="number" />
                 <button class="add">Add</button><br />
               </div>
-              <div class="extraItems">
-                <p class="extraItem">
-                  &nbsp;&nbsp;2 Extra Prickles&nbsp;&nbsp; +$0.60
-                  <span class="x"></span>
-                </p>
-                <p class="extraItem">
-                  &nbsp;&nbsp;2 Extra Prickles&nbsp;&nbsp; +$0.60
-                  <span class="x"></span>
-                </p>
-                <p class="extraItem">
-                  &nbsp;&nbsp;2 Extra Prickles&nbsp;&nbsp; +$0.60
-                  <span class="x"></span>
-                </p>
-                <p class="extraItem">
-                  &nbsp;&nbsp;2 Extra Prickles&nbsp;&nbsp; +$0.60
-                  <span class="x"></span>
-                </p>
-              </div>
+              <div class="extraItems"></div>
             </div>
-
+            <h2 class="total">
+              Total: $
+              <p class="totalNumber"></p>
+            </h2>
             <div class="buttons">
               <button>Place Order</button>
               <button id="cancel">Cancel</button>
