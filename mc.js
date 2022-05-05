@@ -25,6 +25,8 @@ addButton.on('click', function () {
   )
 
   let option = $('option:selected').val()
+  
+  
 
   let addExtraItem = $(`<p class='extraItem'><span class='x'></span></p>`)
 
@@ -35,8 +37,11 @@ addButton.on('click', function () {
         (text.textContent =
           'Tomatoes&nbsp;&nbsp;' + ' +$' + number * itemQuantity.val())
     )
+    var elem = document.getElementById('tot').innerHTML;
+    var elements = elem?.split('$');
+    console.log(parseFloat(elements[1]))
     total.text(
-      'Total: $' + (quantity.val() * 4.49 + number * itemQuantity.val())
+      'Total: $' + (quantity.val() * parseFloat(elements[1]) + number * itemQuantity.val())
     )
   }
 
