@@ -24,10 +24,16 @@ addButton.on('click', function () {
   let text = document.createTextNode(
     extraThing.options[extraThing.selectedIndex].text
   )
+
   let number = 0.25 * itemQuantity.val() * quantity.val()
   let option = $('option:selected').val()
 
-  let addExtraItem = $(`<p class='extraItem'><span class='x'></span></p>`)
+  let addExtraItem = $(
+    `<p class='extraItem' id='extraItem'><span class='x'></span></p>`
+  )
+
+  console.log(localStorage.getItem('extra'))
+  extraItems.append(addExtraItem)
 
   if (option == 1) {
     addExtraItem.prepend(
@@ -35,6 +41,8 @@ addButton.on('click', function () {
         ' Extra ' +
         (text.textContent = 'Tomatoes&nbsp;&nbsp;' + ' +$' + number)
     )
+    let splitted = $('.extraItem').text().split('$').pop()
+    localStorage.setItem('extra', splitted)
 
     var elem = document.getElementById('tot').innerHTML
     var elements = elem?.split('$')
@@ -43,8 +51,6 @@ addButton.on('click', function () {
     } else {
       total.text('Total: $' + (parseFloat(elements[1]) + number))
     }
-    console.log(elements[1])
-    extraItems.append(addExtraItem)
   }
 
   $('span').click(function (e) {
