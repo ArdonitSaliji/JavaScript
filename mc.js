@@ -25,6 +25,7 @@ addButton.on('click', function () {
     extraThing.options[extraThing.selectedIndex].text
   )
 
+  console.log(localStorage.getItem('extra'))
   let number = 0.25 * itemQuantity.val() * quantity.val()
   let option = $('option:selected').val()
 
@@ -32,26 +33,24 @@ addButton.on('click', function () {
     `<p class='extraItem' id='extraItem'><span class='x'></span></p>`
   )
 
-  console.log(localStorage.getItem('extra'))
-  extraItems.append(addExtraItem)
-
   if (option == 1) {
+    extraItems.append(addExtraItem)
     addExtraItem.prepend(
-      itemQuantity.val() +
-        ' Extra ' +
-        (text.textContent = 'Tomatoes&nbsp;&nbsp;' + ' +$' + number)
+      itemQuantity.val() + ' Extra ' + ('Tomatoes&nbsp;&nbsp;' + ' +$' + number)
     )
-    let splitted = $('.extraItem').text().split('$').pop()
-    localStorage.setItem('extra', splitted)
-
     var elem = document.getElementById('tot').innerHTML
     var elements = elem?.split('$')
+    let x2 = parseFloat(elements[1]) + number
+    let elements2 = parseFloat(priceSplit[1]) * quantity.val()
+
     if (quantity.val() > 1) {
-      total.text('Total: $' + (parseFloat(elements[1]) + number))
+      total.text('Total: $' + (elements2 - parseFloat(elements[1]) + x2))
     } else {
       total.text('Total: $' + (parseFloat(elements[1]) + number))
     }
   }
+  let splitted = $('.extraItem').text().split('$').pop()
+  localStorage.setItem('extra', splitted)
 
   $('span').click(function (e) {
     $(e.target).parent().hide(500)
