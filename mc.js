@@ -1,40 +1,36 @@
-let priceTeller = document.querySelector('#price');
 let x = document.querySelectorAll('.x');
 let extraItems = $('.extraItems');
 let extraItem = $('.extraItem');
-let extraThing = document.getElementById('extraThing');
 let itemQuantity = $('#itemQuantity');
 let quantity = $('#quantity');
-let addButton = $('.add');
-let total = $('.total');
-let price = document.getElementById('price').innerHTML;
-let priceSplit = price?.split('$');
 
-const element = $('#tot').text().split('$').pop();
+const arr = [];
 
-addButton.on('click', function () {
+$('.add').on('click', function () {
   let total = $('.total');
-
-  let tot = $('#tot');
-  let option = $('option:selected').val();
   let selectedOption = $('option:selected').text().split('$').pop();
-  let number = selectedOption * itemQuantity.val() * quantity.val();
+  let number = parseFloat(selectedOption) * itemQuantity.val() * quantity.val();
   let addExtraItem = $(`<p class='extraItem' id='extraItem'><span class='x'></span></p>`);
+  let x = 4.5 * quantity.val();
 
-  if (option == 1) {
-    var elem = document.getElementById('tot').innerHTML;
-    var elements = elem?.split('$');
-    let x = parseFloat(elements[1]) + number;
-    let y = 4.5 * quantity.val();
-    console.log(x);
-    extraItems.append(addExtraItem);
-    addExtraItem.prepend(`${itemQuantity.val()} Extra Tomatoes&nbsp;&nbsp;   +$ ${number}`);
-    total.text('Total: $' + x);
-  }
+  arr.push(number);
+  let price007 = arr.reduce((total, amount) => total + amount);
+
+  extraItems.append(addExtraItem);
+  addExtraItem.prepend(`${itemQuantity.val()} Extra Tomatoes&nbsp;&nbsp;   +$ ${number.toFixed(2)}`);
+  total.text('Total: $' + (x + price007).toFixed(2));
 
   $('span').click(function (e) {
     $(e.target).parent().hide(500);
   });
+});
+$('#placeOrder').click(() => {
+  $('.orderWrapper').append(`<div class="orderContainer">
+<p>
+  <span id="indicator">${itemQuantity.val()}</span>McDonald's Quarter 
+</p>
+ <p class="orderContent">${extraItems.text()}</p>
+              </div>`);
 });
 
 $('.x').click(function (e) {
