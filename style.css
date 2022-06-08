@@ -193,25 +193,27 @@ button {
 
 .quarter-popup {
   position: absolute;
-  top: 120px;
-  left: 250px;
-  /* display: none; */
-
+  display: flex;
+  top: 18%;
+  width: 100%;
   justify-content: center;
+  align-items: center;
 }
 .quarter-content {
   background-color: #ffbb0f;
   z-index: 0;
   border-radius: 4px;
+
   display: flex;
-  width: 1000px;
-  height: 550px;
+  width: 60rem;
+  height: 35rem;
   position: relative;
 }
 .quarter {
-  flex: 73%;
   text-align: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .quarter img {
   width: 250px;
@@ -244,13 +246,14 @@ button {
 .add:hover {
   box-shadow: 0px 0px 4px 2px black;
 }
-.quarter-content .back {
+.quarter .back {
   z-index: -10;
   position: absolute;
-  left: 60px;
+  justify-content: center;
+  display: flex;
   background-color: red;
-  width: 470px;
-  height: 370px;
+  width: 450px;
+  height: 400px;
 }
 
 .food {
