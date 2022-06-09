@@ -203,13 +203,13 @@ button {
   background-color: #ffbb0f;
   z-index: 0;
   border-radius: 4px;
-
   display: flex;
-  width: 60rem;
+  width: 62rem;
   height: 35rem;
   position: relative;
 }
 .quarter {
+  flex: 65%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -390,10 +390,10 @@ input[type='number']::-webkit-outer-spin-button {
   padding-top: 20px;
   position: relative;
 }
-.noOrders {
-  padding: 20px 30px;
-  margin-top: 100px;
-  font-size: 16px;
+#noOrders {
+  width: 120px;
+  margin: 135px 0 0 170px;
+  font-size: 15px;
 }
 .orderWrapper {
   display: inline-block;
@@ -413,7 +413,17 @@ input[type='number']::-webkit-outer-spin-button {
   background-color: yellow;
   border-radius: 5px;
   margin-top: 5px;
-  width: 160px;
+  width: 180px;
+  height: 20px;
+}
+.contentTitle {
+  width: 170px;
+  padding: 4px 0px;
+  margin-left: 10px;
+  border: 1px solid black;
+  border-top: none;
+
+  transform: translateY(-4.8px);
 }
 .order h2 {
   margin-bottom: 10px;
@@ -421,7 +431,7 @@ input[type='number']::-webkit-outer-spin-button {
 .order h3 {
   position: absolute;
   bottom: 80px;
-  left: 150px;
+  left: 170px;
 }
 .orders p {
   background-color: inherit;
@@ -432,6 +442,6 @@ input[type='number']::-webkit-outer-spin-button {
   width: 100px;
   position: absolute;
   bottom: 30px;
-  left: 165px;
+  left: 185px;
   font-size: 18px;
 }

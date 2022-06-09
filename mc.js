@@ -32,14 +32,25 @@ $('.add').on('click', function () {
 });
 
 $('#placeOrder').click(() => {
-  let textToAppend = `
-    <div class="orderContainer">
-      <p>
-        <span id="indicator">${itemQuantity.val()}</span>McDonald's Quarter 
-      </p>
-      <p class='orderContent'>${$('#extraItem').text()}</p>
-    </div>
-    `;
+  let textToAppend = $(`
+<div class="orderContainer">
+  <p class="contentTitle">
+    <span id="indicator">${itemQuantity.val()} </span>McDonald's Quarter 
+  </p>
+  
+</div>
+`);
+  for (let i = 0; i < extraArr.length; i++) {
+    let contentToAppend = `<p class='orderContent'>${extraArr[i]}</p>`;
+    textToAppend.append(contentToAppend);
+  }
+
+  if (!extraArr) {
+    $('#noOrders').show();
+  } else {
+    $('#noOrders').hide();
+  }
+
   orderWrapper.append(textToAppend);
 });
 
