@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { randomIntFromInterval, reverseLinkedList, useInterval } from '../../utils'
-
+import { BsArrowRight, BsArrowLeft, BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import './SnakeBoard.css'
-
+import purpleApple from '../../purple-apple.png'
+import redApple from '../../red-apple.png'
 /**
  * TODO: add a more elegant UX for before a game starts and after a game ends.
  * A game probably shouldn't start until the user presses an arrow key, and
@@ -32,7 +33,7 @@ const Direction = {
   LEFT: 'LEFT',
 }
 
-const BOARD_SIZE = 15
+const BOARD_SIZE = 18
 const PROBABILITY_OF_DIRECTION_REVERSAL_FOOD = 0.25
 
 const getStartingSnakeLLValue = (board) => {
@@ -57,6 +58,7 @@ const Board = () => {
   const [foodCell, setFoodCell] = useState(snake.head.value.cell + 5)
   const [direction, setDirection] = useState(Direction.RIGHT)
   const [foodShouldReverseDirection, setFoodShouldReverseDirection] = useState(false)
+
   useEffect(() => {
     window.addEventListener('keydown', (e) => {
       handleKeydown(e)
@@ -183,21 +185,62 @@ const Board = () => {
 
   return (
     <>
-      <h1>Score: {score}</h1>
-      <div className='board'>
-        {board.map((row, rowIdx) => (
-          <div key={rowIdx} className='row'>
-            {row.map((cellValue, cellIdx) => {
-              const className = getCellClassName(
-                cellValue,
-                foodCell,
-                foodShouldReverseDirection,
-                snakeCells
-              )
-              return <div key={cellIdx} className={className}></div>
-            })}
-          </div>
-        ))}
+      <div className='container'>
+        <h1>Score: {score}</h1>
+        <div className='board'>
+          {board.map((row, rowIdx) => (
+            <div key={rowIdx} className='row'>
+              {row.map((cellValue, cellIdx) => {
+                const className = getCellClassName(
+                  cellValue,
+                  foodCell,
+                  foodShouldReverseDirection,
+                  snakeCells
+                )
+                return <div key={cellIdx} className={className}></div>
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className='nav'>
+        <h3>How To Play</h3>
+        <ul className='keys-list'>
+          <li>
+            Press <BsArrowRight className='arrow' /> to go right
+          </li>
+          <li>
+            Press <BsArrowLeft className='arrow' /> to go left
+          </li>
+          <li>
+            Press <BsArrowUp className='arrow' /> to go up
+          </li>
+          <li>
+            Press <BsArrowDown className='arrow' /> to go right
+          </li>
+        </ul>
+        <hr />
+        <h3 className='rules'>Rules</h3>
+        <ul className='apples-list'>
+          <li>
+            <p>
+              Red apple ( <img className='apple' src={redApple} alt='' /> ) makes the snake 1 tile
+              bigger!
+            </p>
+          </li>
+          <li>
+            <p>
+              Purple apple ( <img className='apple' src={purpleApple} alt='' /> ) makes the snake 1
+              tile bigger and reverses the snake's direction!
+            </p>
+          </li>
+          <li>
+            <p>Hitting the corners will end the game!</p>
+          </li>
+          <li>
+            <p>Wrapping around yourself (Eating yourself ) will end the game!</p>
+          </li>
+        </ul>
       </div>
     </>
   )
@@ -304,9 +347,8 @@ const getCellClassName = (cellValue, foodCell, foodShouldReverseDirection, snake
       className = 'cell cell-red'
     }
   }
-  if (snakeCells.has(cellValue)) {
-    className = 'cell cell-green'
-  }
+  if (snakeCells.has(cellValue)) className = 'cell cell-green'
+
   return className
 }
 
