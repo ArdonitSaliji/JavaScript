@@ -1,4 +1,4 @@
-import SnakeBoard from './components/SnakeBoard'
+import SnakeBoard from './components/SnakeBoard/SnakeBoard'
 
 import './App.css'
 const App = () => (
