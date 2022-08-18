@@ -97,14 +97,19 @@ main {
   max-height: 600px;
 }
 .meme-text {
-  display: flex;
-  justify-content: center;
+  user-select: none;
+  z-index: 10;
+  cursor: move;
   position: absolute;
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: center;
   text-align: center;
   margin: 15px 0;
+  font-size: 3rem;
   padding: 0 5px;
   font-family: impact, sans-serif;
-  font-size: 3em;
   text-transform: uppercase;
   color: white;
   letter-spacing: 1px;
@@ -115,5 +120,5 @@ main {
   top: 30px;
 }
 .bottom {
-  bottom: 30px;
+  top: 500px;
 }

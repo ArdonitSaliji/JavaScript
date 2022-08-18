@@ -1,11 +1,13 @@
+/* eslint-disable default-case */
 import React, { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 const Meme = () => {
   const [meme, setMeme] = useState({
     randomImage: 'https://i.imgflip.com/1g8my4.jpg',
   })
+  const [randomMeme, setRandomMeme] = useState()
+  const [fontState, setFontState] = useState(3)
   const [allMemes, setAllMemes] = useState([])
-
   useEffect(() => {
     fetch('https://api.imgflip.com/get_memes')
       .then((res) => res.json())
@@ -28,13 +30,29 @@ const Meme = () => {
       [name]: value,
     }))
   }
+  const decideSize = (el) => {
+    let fs = (el.target.style.fontSize = fontState + 'rem')
+    const fs1 = fs.split('r')
 
+    switch (el.button) {
+      case 0:
+        setFontState((prev) => (prev += 0.5))
+        el.target.style.fontSize = fs1[0] + 'rem'
+        break
+      case 2:
+        setFontState((prev) => (prev -= 0.5))
+        el.target.style.fontSize = fs1[0] + 'rem'
+    }
+  }
+  document.oncontextmenu = document.body.oncontextmenu = function () {
+    return false
+  }
   return (
     <main>
       <div className='form'>
         <input
           onChange={handleChange}
-          value={meme.topText}
+          value={meme.topText || ''}
           name='topText'
           className='form-input'
           type='text'
@@ -42,7 +60,7 @@ const Meme = () => {
         />
         <input
           onChange={handleChange}
-          value={meme.bottomText}
+          value={meme.bottomText || ''}
           name='bottomText'
           className='form-input'
           type='text'
@@ -70,10 +88,14 @@ const Meme = () => {
       <div className='meme'>
         <img src={meme.randomImage} className='meme-image' alt='img' />
         <Draggable>
-          <h2 className='meme-text top'>{meme.topText}</h2>
+          <h2 onPointerUp={(e) => decideSize(e)} className='meme-text top'>
+            {meme.topText}
+          </h2>
         </Draggable>
         <Draggable>
-          <h2 className='meme-text bottom'>{meme.bottomText}</h2>
+          <h2 onPointerUp={(e) => decideSize(e)} className='meme-text bottom'>
+            {meme.bottomText}
+          </h2>
         </Draggable>
       </div>
     </main>
