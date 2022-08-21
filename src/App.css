@@ -25,7 +25,7 @@
   background-color: #17191e;
 }
 .nav h3 {
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 0.5rem 0;
 }
 .keys-list {
   width: 100%;
@@ -33,19 +33,14 @@
   padding: 0;
 }
 .keys-list li {
-  font-size: 24px;
-  margin-top: 0.5rem;
-  margin-left: 2rem;
-  padding: 5px;
-  width: 100%;
+  margin: 0 3rem;
+  margin-top: 1rem;
+  width: 13rem;
   display: flex;
   align-items: center;
   justify-content: left;
   letter-spacing: 1px;
-}
-.arrow {
-  font-size: 20px;
-  margin: 0 5px 0 5px;
+  font-size: 1.5rem;
 }
 
 .nav hr {
@@ -71,13 +66,23 @@
   letter-spacing: 1px;
   line-height: 23px;
   text-align: left;
-  font-size: 18px;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 .apples-list .apple {
   margin-bottom: -3px;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.arrow {
+  font-size: 1.25rem;
+  margin: 0 5px 0 5px;
+}
+@media screen and (max-width: 1150px) {
+  .keys-list li {
+    font-size: 1.5rem;
+    margin: 1rem 1rem 0;
+  }
 }
