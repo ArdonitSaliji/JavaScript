@@ -51,6 +51,8 @@
   align-items: center;
 }
 .upload button {
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
   height: 2.2rem;
   margin: 0 2rem 0;
@@ -60,8 +62,19 @@
   background-color: #fff;
   border: none;
 }
+.upload button input {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+}
 .upload-image {
   cursor: pointer;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,8 +85,17 @@
   border-radius: 50%;
   border: 2px dashed rgb(53, 52, 52);
 }
-.upload-image > * {
+.upload-image input {
+  border-radius: 50%;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-image > svg {
   font-size: 1.5rem;
+  position: absolute;
 }
 .upload-image button {
   text-align: center;
@@ -109,7 +131,7 @@
 }
 .upload-defaults ul li {
   outline: 1px solid white;
-  transition: 0.2s ease-in;
+  transition: 0.3s ease-in;
   cursor: pointer;
   background-color: green;
   border-radius: 50%;

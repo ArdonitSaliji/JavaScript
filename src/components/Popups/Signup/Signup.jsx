@@ -23,8 +23,9 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
     'linear-gradient( 90.3deg,  rgba(4,251,16,1) -0.3%, rgba(251,250,16,1) 64.3% )',
     'linear-gradient( 109.6deg,  rgba(255,174,0,1) 11.2%, rgba(255,0,0,1) 100.2% )',
   ]
-  const gradientImages = defaultColors.map((color) => (
+  const gradientImages = defaultColors.map((color, i) => (
     <li
+      key={i}
       style={
         defaultImages
           ? { transform: 'translateY(-4rem)', backgroundImage: color }
@@ -146,14 +147,17 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
               </a>
             </div>
           </form>
-          <form className='upload-container'>
+          <form className='upload-container' encType='multipart/form-data'>
             <AiOutlineClose onClick={() => setSignUp(false)} className='signup-x' />
             <h2>Upload your image </h2>
             <div className='upload'>
               <div className='upload-image'>
+                <input type='file' />
                 <BsFillCameraFill />
               </div>
-              <button type='button'>Choose image</button>
+              <button type='button'>
+                Choose image <input type='file' />
+              </button>
             </div>
             <div className='upload-defaults'>
               <a onClick={() => setDefaultImages((prev) => !prev)}>
@@ -164,65 +168,7 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
                 Or choose one of our defaults
               </a>
 
-              {
-                <ul>
-                  {gradientImages}
-                  {/* <li
-                    style={
-                      defaultImages
-                        ? { transform: 'translateY(-4rem)' }
-                        : { transform: 'translateY(0)' }
-                    }
-                  >
-                    <span>A</span>
-                  </li>
-                  <li
-                    style={
-                      defaultImages
-                        ? { transform: 'translateY(-4rem)' }
-                        : { transform: 'translateY(0)' }
-                    }
-                  >
-                    <span>A</span>
-                  </li>
-                  <li
-                    style={
-                      defaultImages
-                        ? { transform: 'translateY(-4rem)' }
-                        : { transform: 'translateY(0)' }
-                    }
-                  >
-                    <span>A</span>
-                  </li>
-                  <li
-                    style={
-                      defaultImages
-                        ? { transform: 'translateY(-4rem)' }
-                        : { transform: 'translateY(0)' }
-                    }
-                  >
-                    <span>A</span>
-                  </li>
-                  <li
-                    style={
-                      defaultImages
-                        ? { transform: 'translateY(-4rem)' }
-                        : { transform: 'translateY(0)' }
-                    }
-                  >
-                    <span>A</span>
-                  </li>
-                  <li
-                    style={
-                      defaultImages
-                        ? { transform: 'translateY(-4rem)' }
-                        : { transform: 'translateY(0)' }
-                    }
-                  >
-                    <span>A</span>
-                  </li> */}
-                </ul>
-              }
+              {<ul>{gradientImages}</ul>}
             </div>
             <div className='upload-finish'>
               <p>Skip for now</p>

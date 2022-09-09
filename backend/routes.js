@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const signUpModel = require('./signUpModels')
+
 router.post('/api/login', async (req, res) => {
   const email = await signUpModel.find({ emailOrPhone: req.body.emailOrPhone })
   const account = await signUpModel.findOne({
@@ -22,7 +23,6 @@ router.post('/api/signup', async (req, res) => {
   const userExists = await signUpModel.findOne({
     emailOrPhone: req.body.emailOrPhone,
   })
-  console.log(userExists)
   if (userExists) {
     return res.status(409).json({ error: 'User already exists' })
   }
@@ -35,5 +35,8 @@ router.post('/api/signup', async (req, res) => {
     return res.status(201).json({ data: { id: userCreated.id } })
   }
 })
+// router.get('/api/signup/upload', (req, res) => {
+//   res.sendFile(__dirname)
+// })
 
 module.exports = router
