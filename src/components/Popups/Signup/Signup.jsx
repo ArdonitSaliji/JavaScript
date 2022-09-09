@@ -15,7 +15,25 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
   const [message, setMessage] = useState()
   const [sliderState, setSliderState] = useState(0)
   const [defaultImages, setDefaultImages] = useState(false)
-
+  const defaultColors = [
+    'linear-gradient( 129.1deg,  rgba(243,199,83,1) 26.8%, rgba(18,235,207,1) 114.1% )',
+    'linear-gradient( 65.9deg,  rgba(85,228,224,1) 5.5%, rgba(75,68,224,0.74) 54.2%, rgba(64,198,238,1) 55.2%, rgba(177,36,224,1) 98.4% )',
+    'linear-gradient( 109.6deg,  rgba(6,2,2,1) 32.4%, rgba(137,30,47,1) 98.8% )',
+    'linear-gradient( 113.3deg,  rgba(217,9,27,1) 6.9%, rgba(22,68,150,1) 75% )',
+    'linear-gradient( 90.3deg,  rgba(4,251,16,1) -0.3%, rgba(251,250,16,1) 64.3% )',
+    'linear-gradient( 109.6deg,  rgba(255,174,0,1) 11.2%, rgba(255,0,0,1) 100.2% )',
+  ]
+  const gradientImages = defaultColors.map((color) => (
+    <li
+      style={
+        defaultImages
+          ? { transform: 'translateY(-4rem)', backgroundImage: color }
+          : { transform: 'translateY(0)', backgroundImage: color }
+      }
+    >
+      <span>A</span>
+    </li>
+  ))
   const submitInfo = async (e) => {
     try {
       const res = await fetch('http://localhost:5000/api/signup', {
@@ -140,33 +158,71 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
             <div className='upload-defaults'>
               <a onClick={() => setDefaultImages((prev) => !prev)}>
                 <FaGreaterThan
-                  style={defaultImages && { transform: 'rotate(90deg)' }}
+                  style={!defaultImages && { transform: 'rotate(90deg)' }}
                   className='upload-arrow'
                 />
                 Or choose one of our defaults
               </a>
-              {defaultImages && (
+
+              {
                 <ul>
-                  <li>
+                  {gradientImages}
+                  {/* <li
+                    style={
+                      defaultImages
+                        ? { transform: 'translateY(-4rem)' }
+                        : { transform: 'translateY(0)' }
+                    }
+                  >
                     <span>A</span>
                   </li>
-                  <li>
+                  <li
+                    style={
+                      defaultImages
+                        ? { transform: 'translateY(-4rem)' }
+                        : { transform: 'translateY(0)' }
+                    }
+                  >
                     <span>A</span>
                   </li>
-                  <li>
+                  <li
+                    style={
+                      defaultImages
+                        ? { transform: 'translateY(-4rem)' }
+                        : { transform: 'translateY(0)' }
+                    }
+                  >
                     <span>A</span>
                   </li>
-                  <li>
+                  <li
+                    style={
+                      defaultImages
+                        ? { transform: 'translateY(-4rem)' }
+                        : { transform: 'translateY(0)' }
+                    }
+                  >
                     <span>A</span>
                   </li>
-                  <li>
+                  <li
+                    style={
+                      defaultImages
+                        ? { transform: 'translateY(-4rem)' }
+                        : { transform: 'translateY(0)' }
+                    }
+                  >
                     <span>A</span>
                   </li>
-                  <li>
+                  <li
+                    style={
+                      defaultImages
+                        ? { transform: 'translateY(-4rem)' }
+                        : { transform: 'translateY(0)' }
+                    }
+                  >
                     <span>A</span>
-                  </li>
+                  </li> */}
                 </ul>
-              )}
+              }
             </div>
             <div className='upload-finish'>
               <p>Skip for now</p>
