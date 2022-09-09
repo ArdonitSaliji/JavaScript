@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
+import { BsFillCameraFill } from 'react-icons/bs'
+import { FaGreaterThan } from 'react-icons/fa'
 
 import './Signup.css'
 
@@ -12,6 +14,7 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
   })
   const [message, setMessage] = useState()
   const [sliderState, setSliderState] = useState(0)
+  const [defaultImages, setDefaultImages] = useState(false)
 
   const submitInfo = async (e) => {
     try {
@@ -125,19 +128,49 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
               </a>
             </div>
           </form>
-          <form className='upload'>
+          <form className='upload-container'>
             <AiOutlineClose onClick={() => setSignUp(false)} className='signup-x' />
             <h2>Upload your image </h2>
-            <h3>Supported images: PNG, JPG, JPEG.</h3>
-            <div className='upload-file'>
-              <img src={require('./upload.png')} alt='' />
-              <h4>Drag and drop or browse to choose a file</h4>
+            <div className='upload'>
+              <div className='upload-image'>
+                <BsFillCameraFill />
+              </div>
+              <button type='button'>Choose image</button>
             </div>
-            <div className='upload-buttons'>
-              <button onClick={() => setSliderState(0)} type='button'>
-                Go back
-              </button>
-              <button type='button'>Continue</button>
+            <div className='upload-defaults'>
+              <a onClick={() => setDefaultImages((prev) => !prev)}>
+                <FaGreaterThan
+                  style={defaultImages && { transform: 'rotate(90deg)' }}
+                  className='upload-arrow'
+                />
+                Or choose one of our defaults
+              </a>
+              {defaultImages && (
+                <ul>
+                  <li>
+                    <span>A</span>
+                  </li>
+                  <li>
+                    <span>A</span>
+                  </li>
+                  <li>
+                    <span>A</span>
+                  </li>
+                  <li>
+                    <span>A</span>
+                  </li>
+                  <li>
+                    <span>A</span>
+                  </li>
+                  <li>
+                    <span>A</span>
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div className='upload-finish'>
+              <p>Skip for now</p>
+              <button type='button'>Finish</button>
             </div>
           </form>
         </div>
