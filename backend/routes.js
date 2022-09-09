@@ -19,20 +19,21 @@ router.post('/api/login', async (req, res) => {
 })
 
 router.post('/api/signup', async (req, res) => {
-  const userExists = await signUpModel
-    .find({
-      emailOrPhone: req.body.emailOrPhone,
-    })
-    .limit(1)
-  if (userExists && userExists !== []) {
+  const userExists = await signUpModel.findOne({
+    emailOrPhone: req.body.emailOrPhone,
+  })
+  console.log(userExists)
+  if (userExists) {
     return res.status(409).json({ error: 'User already exists' })
   }
-  const user = new signUpModel({
-    emailOrPhone: req.body.emailOrPhone,
-    password: req.body.password,
-  })
-  const userCreated = await user.save()
-  return res.status(201).json({ data: { id: userCreated.id } })
+  if (!userExists) {
+    const user = new signUpModel({
+      emailOrPhone: req.body.emailOrPhone,
+      password: req.body.password,
+    })
+    const userCreated = await user.save()
+    return res.status(201).json({ data: { id: userCreated.id } })
+  }
 })
 
 module.exports = router
