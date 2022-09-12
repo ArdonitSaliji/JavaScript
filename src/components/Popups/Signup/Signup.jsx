@@ -15,8 +15,8 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
   const [message, setMessage] = useState()
   const [sliderState, setSliderState] = useState(0)
   const [defaultImages, setDefaultImages] = useState(false)
-  const imageRef = useRef()
   const [imagePath, setImagePath] = useState()
+  const [imageColor, setImageColor] = useState()
 
   const defaultColors = [
     'linear-gradient( 129.1deg,  rgba(243,199,83,1) 26.8%, rgba(18,235,207,1) 114.1% )',
@@ -31,9 +31,13 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
       key={i}
       style={
         defaultImages
-          ? { transform: 'translateY(-4rem)', backgroundImage: color }
-          : { transform: 'translateY(0)', backgroundImage: color }
+          ? { transform: 'translateY(0)', backgroundImage: color, color: 'white' }
+          : { transform: 'translateY(-4rem)', backgroundImage: color }
       }
+      onClick={() => {
+        setImagePath()
+        setImageColor(color)
+      }}
     >
       <span>A</span>
     </li>
@@ -91,12 +95,14 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
     setTimeout(() => {
       setImagePath(filePath)
     }, 700)
+    return
   }
 
   const ePrev = (e) => {
     e.preventDefault()
     sendFile()
   }
+
   const deleteAllUploadFiles = async () => {
     const deleteUploads = await fetch('http://localhost:5000/api/delete-uploads')
   }
@@ -178,20 +184,28 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
             <h2>Upload your image </h2>
             <div className='upload'>
               <div className='upload-image'>
-                {imagePath && (
+                {imagePath ? (
                   <img
                     src={require(`../../../uploads/${imagePath}`)}
                     className='image-uploaded'
                     alt=''
                   ></img>
+                ) : (
+                  imageColor && (
+                    <span style={{ backgroundImage: imageColor }} className='image-uploaded' alt=''>
+                      <h1 style={{ color: 'white' }}>
+                        {state.emailOrPhone && state.emailOrPhone[0].toUpperCase()}
+                      </h1>
+                    </span>
+                  )
                 )}
+
                 <div type='file' />
-                <BsFillCameraFill />
+                {!imageColor && <BsFillCameraFill />}
               </div>
               <button type='button'>
                 Choose image
                 <input
-                  ref={imageRef}
                   onChange={(e) => {
                     ePrev(e)
                   }}
@@ -204,17 +218,29 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
             <div className='upload-defaults'>
               <a onClick={() => setDefaultImages((prev) => !prev)}>
                 <FaGreaterThan
-                  style={!defaultImages && { transform: 'rotate(90deg)' }}
+                  style={defaultImages && { transform: 'rotate(90deg)' }}
                   className='upload-arrow'
                 />
                 Or choose one of our defaults
               </a>
-
               <ul>{gradientImages}</ul>
             </div>
             <div className='upload-finish'>
               <p>Skip for now</p>
-              <button onClick={() => deleteAllUploadFiles()}>Finish</button>
+              <button
+                type='button'
+                onClick={() => {
+                  deleteAllUploadFiles()
+
+                  setTimeout(() => {
+                    setImagePath()
+                    alert('Account created successfully!')
+                    setSignUp(false)
+                  }, 100)
+                }}
+              >
+                Finish
+              </button>
             </div>
           </form>
         </div>

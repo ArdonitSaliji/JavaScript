@@ -27,7 +27,6 @@
   position: absolute;
   transition: all 0.5s;
 
-  transform: translateX(-50%) !important;
   display: flex;
 }
 .upload-container {
@@ -79,7 +78,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100;
-  cursor: pointer;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -99,12 +97,17 @@
   height: 100%;
 }
 .image-uploaded {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  z-index: 4;
 }
-
+.image-uploaded h1 {
+  font-size: 4rem;
+  font-weight: 500;
+}
 .upload-image > svg {
   font-size: 1.5rem;
   position: absolute;
