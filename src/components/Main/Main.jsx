@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import './Main.css'
 import { data, listing } from './data'
 import { AiOutlineSearch } from 'react-icons/ai'
-
 const Main = ({ setTrade, setGemState }) => {
   const [searchState, setSearchState] = useState()
-
   const switchTrade = (e) => {
     setGemState(e.target.firstElementChild.textContent.toLowerCase())
   }
-
   const allGems = data.map(({ title, image, text }, index) => (
     <div
       key={index}

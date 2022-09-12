@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
+import { useRef } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { FaGreaterThan } from 'react-icons/fa'
-
 import './Signup.css'
 
 const Signup = ({ signUp, setSignUp, setLogin }) => {
@@ -15,6 +15,9 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
   const [message, setMessage] = useState()
   const [sliderState, setSliderState] = useState(0)
   const [defaultImages, setDefaultImages] = useState(false)
+  const imageRef = useRef()
+  const [imagePath, setImagePath] = useState()
+
   const defaultColors = [
     'linear-gradient( 129.1deg,  rgba(243,199,83,1) 26.8%, rgba(18,235,207,1) 114.1% )',
     'linear-gradient( 65.9deg,  rgba(85,228,224,1) 5.5%, rgba(75,68,224,0.74) 54.2%, rgba(64,198,238,1) 55.2%, rgba(177,36,224,1) 98.4% )',
@@ -73,6 +76,29 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
         submitInfo(e)
       }
     }
+  }
+
+  const sendFile = async () => {
+    const fileInput = document.querySelector('#filetoupload')
+    const formData = new FormData()
+    formData.append('filetoupload', fileInput.files[0])
+
+    const send = await fetch('http://localhost:5000/api/signup/upload', {
+      method: 'POST',
+      body: formData,
+    })
+    const { filePath } = await send.json()
+    setTimeout(() => {
+      setImagePath(filePath)
+    }, 700)
+  }
+
+  const ePrev = (e) => {
+    e.preventDefault()
+    sendFile()
+  }
+  const deleteAllUploadFiles = async () => {
+    const deleteUploads = await fetch('http://localhost:5000/api/delete-uploads')
   }
 
   return (
@@ -147,16 +173,32 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
               </a>
             </div>
           </form>
-          <form className='upload-container' encType='multipart/form-data'>
+          <form className='upload-container'>
             <AiOutlineClose onClick={() => setSignUp(false)} className='signup-x' />
             <h2>Upload your image </h2>
             <div className='upload'>
               <div className='upload-image'>
-                <input type='file' />
+                {imagePath && (
+                  <img
+                    src={require(`../../../uploads/${imagePath}`)}
+                    className='image-uploaded'
+                    alt=''
+                  ></img>
+                )}
+                <div type='file' />
                 <BsFillCameraFill />
               </div>
               <button type='button'>
-                Choose image <input type='file' />
+                Choose image
+                <input
+                  ref={imageRef}
+                  onChange={(e) => {
+                    ePrev(e)
+                  }}
+                  type='file'
+                  id='filetoupload'
+                  name='filetoupload'
+                />
               </button>
             </div>
             <div className='upload-defaults'>
@@ -168,11 +210,11 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
                 Or choose one of our defaults
               </a>
 
-              {<ul>{gradientImages}</ul>}
+              <ul>{gradientImages}</ul>
             </div>
             <div className='upload-finish'>
               <p>Skip for now</p>
-              <button type='button'>Finish</button>
+              <button onClick={() => deleteAllUploadFiles()}>Finish</button>
             </div>
           </form>
         </div>
