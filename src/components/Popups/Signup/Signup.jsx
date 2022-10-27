@@ -23,9 +23,6 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
       })
       if (res.status === 201) {
         setMessage('Account created successfully')
-        setTimeout(() => {
-          setMessage('')
-        }, 500)
       }
       if (res.status === 409) {
         e.preventDefault()
@@ -65,11 +62,7 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
         }}
         className='signup'
       >
-        <AiOutlineClose
-          style={{ right: '53%' }}
-          onClick={() => setSignUp(false)}
-          className='signup-x'
-        />
+        <AiOutlineClose onClick={() => setSignUp(false)} className='signup-x' />
         <h1 className='signup-title'>Sign up</h1>
         <div className='signup-inputs'>
           <input

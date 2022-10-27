@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "eslint": "^8.22.0",
     "gh-pages": "^4.0.0",

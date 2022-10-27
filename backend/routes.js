@@ -1,41 +1,8 @@
 const express = require('express')
 const signUpModel = require('./signUpModels')
-const multer = require('multer')
 const uuid = require('uuid').v4
 const router = express.Router()
 const fs = require('fs')
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './src/uploads')
-  },
-  filename: (req, file, cb) => {
-    const { originalname } = file
-    cb(null, originalname)
-  },
-})
-const upload = multer({ storage })
-
-router.get('/api/delete-uploads/', (req, res) => {
-  const fs = require('fs')
-
-  let DIR = './src/uploads/'
-
-  fs.readdir(DIR, (error, filesInDirectory) => {
-    if (error) throw error
-
-    for (let file of filesInDirectory) {
-      console.log('File removed : ' + file)
-      fs.unlinkSync(DIR + file)
-    }
-  })
-  return res.json({ files: 'All deleted' })
-})
-
-router.post('/api/signup/upload', upload.single('filetoupload'), function (req, res) {
-  const filePath = req.file.filename
-  return res.json({ filePath: filePath })
-})
 
 router.post('/api/login', async (req, res) => {
   const email = await signUpModel.find({ emailOrPhone: req.body.emailOrPhone })
