@@ -27,16 +27,16 @@ const Navbar = ({ setAccountPopup, loginStatus, setLogin, setSignUp, basketState
           <div className='navbar-links'>
             <ul>
               <li>
-                <Link to='/'>Home</Link>
+                <Link to='/jewerelly-eCommerce'>Home</Link>
               </li>
               <li>
-                <Link to='/'>Prices</Link>
+                <Link to='/jewerelly-eCommerce'>Prices</Link>
               </li>
               <li>
-                <Link to='/'>About us</Link>
+                <Link to='/jewerelly-eCommerce'>About us</Link>
               </li>
               <li>
-                <Link to='/basket'>
+                <Link to='jewerelly-eCommerce/basket'>
                   Basket&nbsp;
                   {basketState && basketState.length > 0 && (
                     <span className='basket-indicator'>{basketState.length}</span>

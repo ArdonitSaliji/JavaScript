@@ -23,6 +23,10 @@ const Signup = ({ signUp, setSignUp, setLogin }) => {
       })
       if (res.status === 201) {
         setMessage('Account created successfully')
+        setTimeout(() => {
+          setMessage('')
+          setSignUp(false)
+        }, 700)
       }
       if (res.status === 409) {
         e.preventDefault()

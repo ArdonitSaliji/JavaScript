@@ -105,7 +105,7 @@ const Login = ({ loginStatus, setLoginStatus, login, setLogin, setSignUp }) => {
             </button>
           </div>
 
-          <Link onClick={() => setLogin(false)} to={'/reset-password'}>
+          <Link onClick={() => setLogin(false)} to={'/jewerelly-eCommerce/reset-password'}>
             Forgot password?
           </Link>
         </form>

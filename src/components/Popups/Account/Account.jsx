@@ -27,6 +27,7 @@ const Account = ({ setLoginStatus, accountPopup, setAccountPopup }) => {
               sessionStorage.setItem('loginStatus', JSON.stringify(false))
               setAccountPopup(false)
               setLoginStatus(false)
+              window.location.reload()
             }}
           >
             Logout

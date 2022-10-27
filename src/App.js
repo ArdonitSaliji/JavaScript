@@ -39,15 +39,15 @@ function App() {
 
         <Routes>
           <Route
-            path='/'
+            path='/jewerelly-eCommerce'
             element={<Main trade={trade} setTrade={setTrade} setGemState={setGemState} />}
           />
           <Route
-            path='/reset-password'
+            path='/jewerelly-eCommerce/reset-password'
             element={<Forgot setSignUp={setSignUp} setLogin={setLogin} />}
           />
           <Route
-            path='/basket'
+            path='/jewerelly-eCommerce/basket'
             element={<Basket basketState={basketState} setBasketState={setBasketState} />}
           />
         </Routes>

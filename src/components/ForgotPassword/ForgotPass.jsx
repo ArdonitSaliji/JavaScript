@@ -19,7 +19,7 @@ const Forgot = ({ setSignup }) => {
           <hr className='forgot-or-hr' />
         </span>
         <a onClick={() => setTimeout(() => setSignup(true), 200)}>Create New Account</a>
-        <Link to={'/'} className='forgot-back'>
+        <Link to={'/jewerelly-eCommerce'} className='forgot-back'>
           Go Back
         </Link>
       </form>
