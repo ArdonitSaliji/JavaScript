@@ -1,0 +1,14 @@
+<h1>File Upload</h1>
+
+<form enctype="multipart/form-data">
+  <input type="file" name="file" />
+  <button onclick="upload()">Submit</button>
+</form>
+
+<script>
+  const upload = async () => {
+    const images = await fetch('http://localhost:4000/uploads', {
+      method: 'POST',
+    })
+  }
+</script>
