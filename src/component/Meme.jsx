@@ -39,14 +39,12 @@ const Meme = () => {
         setFontState((prev) => (prev += 0.5))
         el.target.style.fontSize = fs1[0] + 'rem'
         break
-      case 2:
+      case 1:
         setFontState((prev) => (prev -= 0.5))
         el.target.style.fontSize = fs1[0] + 'rem'
     }
   }
-  document.oncontextmenu = document.body.oncontextmenu = function () {
-    return false
-  }
+
   return (
     <main>
       <div className='form'>
@@ -73,18 +71,6 @@ const Meme = () => {
         </button>
       </div>
 
-      {/* <div className='form__add-div'>
-        <input
-          className='form__add-input'
-          name='randomMeme'
-          type='text'
-          placeholder='Add more meme text'
-        />
-        <button className='form__add-button' onClick={handleChange}>
-          Add more text
-        </button>
-      </div> */}
-
       <div className='meme'>
         <img src={meme.randomImage} className='meme-image' alt='img' />
         <Draggable>
@@ -103,3 +89,21 @@ const Meme = () => {
 }
 
 export default Meme
+
+// Todo
+// Add input that can display extra text
+
+//  html and css to do so
+//         ↓ ↓ ↓ ↓
+
+/* <div className='form__add-div'>
+        <input
+          className='form__add-input'
+          name='randomMeme'
+          type='text'
+          placeholder='Add more meme text'
+        />
+        <button className='form__add-button' onClick={handleChange}>
+          Add more text
+        </button>
+      </div> */
