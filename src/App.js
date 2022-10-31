@@ -22,17 +22,14 @@ function App() {
   useLayoutEffect(() => {
     localStorage.setItem('notes-data', JSON.stringify(savedNotes))
     setDarkMode(savedMode)
-    console.log('render 1')
   }, [])
 
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode))
-    console.log('render 3')
   }, [darkMode])
 
   useEffect(() => {
     localStorage.setItem('notes-data', JSON.stringify(notes))
-    console.log('render 2')
   }, [notes])
 
   const addNote = (text) => {

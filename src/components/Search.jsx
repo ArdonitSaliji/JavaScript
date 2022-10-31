@@ -2,23 +2,22 @@ import React, { useEffect } from 'react'
 import { MdSearch } from 'react-icons/md'
 const Search = ({ notes, setNotes, darkMode, handleSearchNote }) => {
   const savedSort = JSON.parse(localStorage.getItem('notes-data'))
-
   function decide(e) {
     if (e.target.value === 'Newest') {
-      const neww = notes.sort(
+      const newNotes = notes.sort(
         (a, b) => new Date(...a.date.split('/')) - new Date(...b.date.split('/'))
       )
 
-      localStorage.setItem('notes-data', JSON.stringify(neww))
+      localStorage.setItem('notes-data', JSON.stringify(newNotes))
       const savedSort = JSON.parse(localStorage.getItem('notes-data'))
 
       setNotes(savedSort)
     } else if (e.target.value === 'Oldest') {
-      const oldd = notes.sort(
+      const oldNotes = notes.sort(
         (a, b) => new Date(...b.date.split('/')) - new Date(...a.date.split('/'))
       )
 
-      localStorage.setItem('notes-data', JSON.stringify(oldd))
+      localStorage.setItem('notes-data', JSON.stringify(oldNotes))
       const savedSort = JSON.parse(localStorage.getItem('notes-data'))
 
       setNotes(savedSort)
