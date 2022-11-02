@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Order Now</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="navbar-logo">
+          <img src="th.jpg" alt="McDonald's Logo" />
+        </div>
+        <div class="navbar-links">
+          <ul>
+            <li><a href="index.html">Home </a></li>
+            <li><a href="Order.html">Order Now</a></li>
+            <li><a href="">About Our Food</a></li>
+            <li><a href="">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <main class="content-o">
+        <h1>Place Your Orders</h1>
+        <div class="images-o">
+          <img src="Hamburger.jpg" alt="" />
+          <img src="double.jpg" alt="" />
+          <img src="quarter.jpg" alt="" />
+          <img src="Bicmac.jpg" alt="" />
+          <img src="Feast.jpg" alt="" />
+        </div>
+        <div class="images-text-o">
+          <h3>McDonald's Hamburger</h3>
+          <h3>McDonald's Double</h3>
+          <h3>McDonald's Quarter</h3>
+          <h3>McDonald's Bic Mac</h3>
+          <h3>McDonald's Feast</h3>
+        </div>
+        <div class="images-text-btn">
+          <button>Order Now</button>
+          <button>Order Now</button>
+          <button id="quarter">Order Now</button>
+          <button>Order Now</button>
+          <button>Order Now</button>
+        </div>
+      </main>
+
+      <div class="quarter-popup">
+        <div class="quarter-content">
+          <div class="quarter">
+            <span class="back"></span>
+            <img src="quarter.jpg" alt="" /> <br />
+            <h2>McDonald's Quarter</h2>
+            <div class="food">
+              <input value="1" id="quantity" type="number" />
+              <h3 id="price">$4.50</h3>
+            </div>
+
+            <div class="extra">
+              <div class="extraContent">
+                <h3>Add Extra</h3>
+
+                <select id="extraThing">
+                  <option value="1">Tomatoes&nbsp;&nbsp; +$0.25</option>
+
+                  <option value="2">Prickles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +$0.30</option>
+
+                  <option value="3">Cabbages&nbsp; +$0.35</option>
+
+                  <option value="4">Cheese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +$0.40</option>
+
+                  <option value="5">Onions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +$0.20</option>
+                </select>
+
+                <input value="1" id="itemQuantity" type="number" />
+                <button class="add">Add</button><br />
+              </div>
+              <div class="extraItems"></div>
+            </div>
+            <h2 class="total" id="tot">Total: $4.50</h2>
+            <div class="buttons">
+              <button id="placeOrder">Place Order</button>
+              <button id="cancel">Cancel</button>
+            </div>
+          </div>
+          <div class="order">
+            <h2>Your Orders</h2>
+            <div class="orderWrapper">
+              <div id="noOrders"><h1>No Current Orders</h1></div>
+            </div>
+            <h3>Whole Price: $0</h3>
+
+            <button class="continue">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="mc.js"></script>
+  </body>
+</html>
